@@ -1,0 +1,279 @@
+{% extends 'base.html' %}
+
+{% block content %}
+
+    <!-- ======= hero Section ======= -->
+    <section id="hero" style="height: 550px">
+        <div class="hero-container">
+            <div id="heroCarousel" class="carousel slide carousel-fade" data-bs-ride="carousel" data-bs-interval="5000">
+
+                <ol id="hero-carousel-indicators" class="carousel-indicators"></ol>
+
+                <div class="carousel-inner" role="listbox">
+                    {% for i in banners %}
+                    <div class="carousel-item {% if forloop.first %}active{% endif %}" style="background-image: url({{ i.image.url }})">
+                        <div class="carousel-container">
+                            <div class="container">
+                                <p class="animate__animated animate__fadeInUp">{{ i.text }}</p>
+                            </div>
+                        </div>
+                    </div>
+                    {% endfor %}
+
+                </div>
+
+                <a class="carousel-control-prev" href="#heroCarousel" role="button" data-bs-slide="prev">
+                    <span class="carousel-control-prev-icon bi bi-chevron-left" aria-hidden="true"></span>
+                </a>
+
+                <a class="carousel-control-next" href="#heroCarousel" role="button" data-bs-slide="next">
+                    <span class="carousel-control-next-icon bi bi-chevron-right" aria-hidden="true"></span>
+                </a>
+
+            </div>
+        </div>
+    </section>
+    <!-- End Hero Section -->
+
+
+    <!-- ======= About Section ======= -->
+    <div id="about" class="about-area area-padding">
+        <div class="container">
+            <div class="row">
+                <div class="col-md-12 col-sm-12 col-xs-12">
+                    <div class="section-headline text-center">
+                        <h2>Bog'chamiz haqida</h2>
+                    </div>
+                </div>
+            </div>
+            <div class="row">
+                <!-- single-well start-->
+                <div class="col-md-6 col-sm-6 col-xs-12">
+                    <div class="well-left">
+                        <div class="single-well">
+                            <a href="#">
+                                <img src="/media/gallery/children1.jpg" alt="">
+                            </a>
+                        </div>
+                    </div>
+                </div>
+                <!-- single-well end-->
+                <div class="col-md-6 col-sm-6 col-xs-12">
+                    <div class="well-middle">
+                        <div class="single-well">
+                            <a href="#">
+                                <h4 class="sec-head">Biz bilan farzandlaringiz havfsiz!</h4>
+                            </a>
+                            <p>
+                                Redug Lagre dolor sit amet, consectetur adipisicing elit. Itaque quas officiis iure
+                                aspernatur sit adipisci quaerat unde at nequeRedug Lagre dolor sit amet, consectetur
+                                adipisicing elit. Itaque quas officiis iure
+                            </p>
+                            <ul>
+                                <li>
+                                    <i class="bi bi-check"></i> Farzandlaringiz yoshiga mos taomnoma
+                                </li>
+                                <li>
+                                    <i class="bi bi-check"></i> Malakali tarbiyachilar
+                                </li>
+                                <li>
+                                    <i class="bi bi-check"></i> Quvnoq o'yinlar
+                                </li>
+                                <li>
+                                    <i class="bi bi-check"></i> Kun tartibiga qat'iy rioya
+                                </li>
+                                <li>
+                                    <i class="bi bi-check"></i> Sog'lomlashtiruvchi mashg'ulotlar
+                                </li>
+                            </ul>
+                        </div>
+                    </div>
+                </div>
+                <!-- End col-->
+            </div>
+        </div>
+    </div>
+    <!-- End About Section -->
+
+    <!-- ======= Portfolio Section ======= -->
+    <div id="portfolio" class="portfolio-area area-padding fix">
+        <div class="container">
+            <div class="row">
+                <div class="col-lg-12 col-md-12 col-sm-12 col-xs-12">
+                    <div class="section-headline text-center">
+                        <h2>Galereya</h2>
+                    </div>
+                </div>
+            </div>
+
+
+            <div class="row awesome-project-content portfolio-container">
+                {% for i in gallery %}
+                    <div class="col-md-4 col-sm-4 col-xs-12 portfolio-item filter-app portfolio-item">
+                        <div class="single-awesome-project">
+                            <div class="awesome-img">
+                                <img src="{{ i.image.url }}" alt=""/>
+                                <div class="add-actions text-center">
+                                    <div class="project-dec">
+                                        <a class="portfolio-lightbox" href="{{ i.image.url }}">
+                                            <h4>{{ i.text }}</h4>
+                                        </a>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                {% endfor %}
+            </div>
+        </div>
+    </div>
+    <!-- End Portfolio Section -->
+
+    <!-- ======= Blog Section ======= -->
+    <div id="blog" class="blog-area bg-light">
+        <div class="blog-inner area-padding">
+            <div class="blog-overly"></div>
+            <div class="container ">
+                <div class="row">
+                    <div class="col-md-12 col-sm-12 col-xs-12">
+                        <div class="section-headline text-center">
+                            <h2>So'nggi yangiliklar</h2>
+                        </div>
+                    </div>
+                </div>
+                <div class="row">
+                    <!-- Start Left Blog -->
+                    {% for i in news %}
+                        <div class="col-md-4 col-sm-4 col-xs-12">
+                            <div class="single-blog">
+                                <div class="single-blog-img">
+                                    <a href="">
+                                        <img src="{{ i.image.url }}" alt="{{ i.title }}">
+                                    </a>
+                                </div>
+                                <div class="blog-meta">
+
+                                    <span class="date-type">
+                    <i class="fa fa-calendar"></i>{{ i.created_at|date:'d.m.Y H:i' }}
+                  </span>
+                                </div>
+                                <div class="blog-text">
+                                    <h4>
+                                        <a href="">{{ i.title }}</a>
+                                    </h4>
+                                    <p>
+                                        {{ i.description }}   </p>
+                                </div>
+                                <span>
+                  <a href="{% url 'news-detail' pk=i.pk %}" class="ready-btn">Batafsil</a>
+                </span>
+                            </div>
+
+                            <!-- Start single blog -->
+                        </div>
+                    {% endfor %}
+
+
+                </div>
+            </div>
+        </div>
+    </div>
+    <!-- End Blog Section -->
+
+
+
+
+    <br>
+
+    <!-- ======= Testimonials Section ======= -->
+    <div id="testimonials" class="testimonials" style="background-image: url(/media/background/bg1.jpg)">
+        <div class="container">
+
+            <div class="testimonials-slider swiper-container">
+                <div class="swiper-wrapper">
+
+                    <div class="swiper-slide">
+                        <div class="testimonial-item">
+                            <img src="/media/quotes/1.jpeg" class="testimonial-img" alt="">
+                            <h3>Abdulla Avloniy</h3>
+                            <h4>1878-1934</h4>
+                            <p>
+                                <i class="bx bxs-quote-alt-left quote-icon-left"></i> Tarbiya biz uchun yo hayot – yo
+                                mamot, yo najot – yo halokat, yo saodat – yo falokat masalasidir
+                                <i class="bx bxs-quote-alt-right quote-icon-right"></i>
+                            </p>
+                        </div>
+                    </div>
+                    <!-- End testimonial item -->
+
+                    <div class="swiper-slide">
+                        <div class="testimonial-item">
+                            <img src="/media/quotes/2.jpg" class="testimonial-img" alt="">
+                            <h3>Abu Ali Ibn Sino</h3>
+                            <h4>980-1034</h4>
+                            <p>
+                                <i class="bx bxs-quote-alt-left quote-icon-left"></i> Yaxshi va yomon xulqning hammasi
+                                sharoit, tarbiya, odatlanish natijasida vujudga keladi. Yaxshi xulqqa ham odat tufayli
+                                erishiladi.
+                                <i class="bx bxs-quote-alt-right quote-icon-right"></i>
+                            </p>
+                        </div>
+                    </div>
+                    <!-- End testimonial item -->
+
+                    <div class="swiper-slide">
+                        <div class="testimonial-item">
+                            <img src="/media/quotes/3.jpg" class="testimonial-img" alt="">
+                            <h3>Maxatma Gandi</h3>
+                            <h4>1869-1948</h4>
+                            <p>
+                                <i class="bx bxs-quote-alt-left quote-icon-left"></i> Agar biz butun dunyoda tinchlik
+                                o‘rnatishni istasak, ishni bolalar tarbiyasidan boshlashimiz zarur.
+                                <i class="bx bxs-quote-alt-right quote-icon-right"></i>
+                            </p>
+                        </div>
+                    </div>
+                    <!-- End testimonial item -->
+
+                    <div class="swiper-slide">
+                        <div class="testimonial-item">
+                            <img src="/media/quotes/4.jpg" class="testimonial-img" alt="">
+                            <h3>Abdurauf Fitrat</h3>
+                            <h4>1886-1938</h4>
+                            <p>
+                                <i class="bx bxs-quote-alt-left quote-icon-left"></i> Tarbiya uch qismdan iborat: badan
+                                tarbiyasi, aqliy tarbiya va axloq tarbiyasi.
+                                <i class="bx bxs-quote-alt-right quote-icon-right"></i>
+                            </p>
+                        </div>
+                    </div>
+                    <!-- End testimonial item -->
+
+                    <div class="swiper-slide">
+                        <div class="testimonial-item">
+                            <img src="/media/quotes/5.jpg" class="testimonial-img" alt="">
+                            <h3>Alisher Navoiy</h3>
+                            <h4>1441-1501</h4>
+                            <p>
+                                <i class="bx bxs-quote-alt-left quote-icon-left"></i>Yosh bolaning juda kichik yoshidan
+                                boshlab tarbiyalamoq zarur. Tarbiya insonga o’zida yaxshi odat va fazilatlar xosil
+                                qilishga yordam beradi.
+                                <i class="bx bxs-quote-alt-right quote-icon-right"></i>
+                            </p>
+                        </div>
+                    </div>
+                    <!-- End testimonial item -->
+
+                </div>
+                <div class="swiper-pagination"></div>
+            </div>
+
+        </div>
+    </div>
+    <!-- End Testimonials Section -->
+
+
+
+
+
+{% endblock %}

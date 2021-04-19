@@ -1,0 +1,33 @@
+{% extends 'base.html' %}
+{% block content %}
+
+    <div class="container-fluid mt-5" >
+        <div class="row">
+            <div class="col-md-8 offset-md-2">
+                <!-- single-blog start -->
+                <article class="blog-post-wrapper">
+                    <div class="post-thumbnail">
+                        <img class="w-100 mt-5" src="{{ object.image.url }}" alt="{{ object.title }}">
+                    </div>
+                    <div class="post-information">
+                        <h2>{{ object.title }}</h2>
+                        <div class="entry-meta">
+                            <span><i class="bi bi-clock"></i> {{ object.created_at|date:'d.m.Y H:i' }}</span>
+                        </div>
+                        <div class="entry-content">
+                            <em>{{ object.description }}</em>
+                            <br>
+                            <br>
+                            <p>
+                                {{ object.content }}
+                            </p>
+                        </div>
+                    </div>
+                </article>
+                <div class="clear"></div>
+            </div>
+        </div>
+    </div>
+
+
+{% endblock %}

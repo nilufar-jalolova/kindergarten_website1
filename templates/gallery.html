@@ -1,0 +1,74 @@
+{% extends 'base.html' %}
+{% block content %}
+    <!-- ======= Gallery section ======= -->
+    <div id="Gallery" class="portfolio-area area-padding fix" style="background: #eef5f9;">
+        <div class="container">
+            <div class="row">
+                <div class="col-lg-12 col-md-12 col-sm-12 col-xs-12">
+                    <div class="section-headline text-center my-5">
+                        <h2>Galereya</h2>
+                    </div>
+                </div>
+            </div>
+
+            <div class="row awesome-project-content portfolio-container">
+                    {% for i in object_list %}
+                <!-- portfolio-item start -->
+                <div class="col-md-4 col-sm-4 col-xs-12 portfolio-item filter-app portfolio-item">
+                    <div class="single-awesome-project">
+                        <div class="awesome-img">
+                            <a href="#"><img src="{{ i.image.url }}" alt="{{ i.text }}"/></a>
+                            <div class="add-actions text-center">
+                                <div class="project-dec">
+                                    <a class="portfolio-lightbox" data-gallery="myGallery"
+                                       href="{{ i.image.url }}">
+                                        <h4>{{ i.text }}</h4>
+                                    </a>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                {% endfor %}
+                <!-- portfolio-item end -->
+
+            </div>
+        </div>
+    </div>
+    <!-- End Portfolio Section -->
+{% endblock %}
+<!-- ======= Footer ======= -->
+<footer>
+
+    <div class="footer-area-bottom">
+        <div class="container">
+            <div class="row">
+                <div class="col-md-12 col-sm-12 col-xs-12">
+                    <div class="credits text-center">
+
+                        Designed by student of NAPA academy Jalolova Nilufar</a>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</footer>
+<!-- End  Footer -->
+
+<div id="preloader"></div>
+<a href="#" class="back-to-top d-flex align-items-center justify-content-center"><i
+        class="bi bi-arrow-up-short"></i></a>
+
+<!-- Vendor JS Files -->
+<script src="assets/vendor/bootstrap/js/bootstrap.bundle.min.js"></script>
+<script src="assets/vendor/glightbox/js/glightbox.min.js"></script>
+<script src="assets/vendor/isotope-layout/isotope.pkgd.min.js"></script>
+<script src="assets/vendor/php-email-form/validate.js"></script>
+<script src="assets/vendor/swiper/swiper-bundle.min.js"></script>
+
+<!-- Template Main JS File -->
+<script src="assets/js/main.js"></script>
+
+</body>
+
+</html>
